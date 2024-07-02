@@ -15,6 +15,6 @@ class TrainAndLoggingCallback(BaseCallback):
 
     def _on_step(self):
         if self.n_calls % self.check_freq == 0:
-            model_path = os.path.join(self.save_path, 'Mario{}'.format(self.n_calls))
+            model_path = os.path.join(self.save_path, 'Doom{}'.format(self.n_calls))
             self.model.save(model_path)
         return True
