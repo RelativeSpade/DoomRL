@@ -38,11 +38,12 @@ class VizDoomGym(Env):
             image = self.game.get_state().screen_buffer
             image = self.grayscale(image)
             ammo = self.game.get_state().game_variables[0]
-            info = {"ammo": ammo}
+            info = ammo
         else:
             image = np.zeros(self.observation_space.shape)
-            info = {"ammo": 0}
+            info = 0
 
+        info = {"info": info}
         done = self.game.is_episode_finished()
         return image, reward, done, info
 
