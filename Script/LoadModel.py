@@ -5,11 +5,11 @@ from stable_baselines3 import PPO
 from Script.VizDoomGym import VizDoomGym
 
 # directory of model
-load = '../train/Mario100000'
+load = '../train/Doom100000'
 # load model from disk
 model = PPO.load(load)
 # create rendered game
-env = VizDoomGym(render=True)
+env = VizDoomGym(True, '../Vizdoom/scenarios/defend_the_center.cfg')
 
 # evaluate mean score for 10 games
 total_reward = 0
