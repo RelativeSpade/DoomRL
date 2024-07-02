@@ -34,4 +34,4 @@ else:
     model = PPO.load(latest_model_path, env, tensorboard_log=LOG_DIR)
     callback.n_calls = latest_n_calls
 
-model.learn(total_timesteps=latest_n_calls + 100000, callback=callback)
+model.learn(total_timesteps=100000, callback=callback)
