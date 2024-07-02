@@ -20,7 +20,7 @@ Training was conducted on my desktop with an RTX 3070 Ti. The training time was 
 
 ## How to Run This Yourself
 
-Although it may not be widely attempted, here are the steps to replicate this project:
+Frankly, I doubt anyone cares enough to do so, but I will include this nonetheless.
 
 ### Requirements
 
