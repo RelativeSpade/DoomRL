@@ -8,12 +8,12 @@ from vizdoom import *
 class VizDoomGym(Env):
 
     # Function that is called when we start the Env
-    def __init__(self, render=False):
+    def __init__(self, render=False, configMap='../Vizdoom/scenarios/basic.cfg'):
         super().__init__()
         # Set up the game
         self.game = DoomGame()
         # Choose the level
-        self.game.load_config('../Vizdoom/scenarios/basic.cfg')
+        self.game.load_config(configMap)
 
         # If you are rendering the game
         if render:
@@ -30,7 +30,7 @@ class VizDoomGym(Env):
     # Function that is called on every Ai action (or step)
     def step(self, action):
         # Specify actions and take step
-        actions = np.identity(3, int)
+        actions = np.identity(3, dtype=np.uint8)
         reward = self.game.make_action(actions[action], 4)
 
         # Get necessary returns from client
