@@ -6,7 +6,7 @@ from Script.VizDoomGym import VizDoomGym
 
 # directory of model
 CHECKPOINT_DIR = '../train/'
-load = get_latest_model(CHECKPOINT_DIR)
+load, _ = get_latest_model(CHECKPOINT_DIR)
 # load model from disk
 model = PPO.load(load)
 # create rendered game
