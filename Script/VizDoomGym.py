@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from gym import Env
 from gym.spaces import Discrete, Box
-from vizdoom import DoomGame
+from vizdoom import *
 
 
 class VizDoomGym(Env):
