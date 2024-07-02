@@ -1,6 +1,6 @@
 # Doom Reinforcement Learning
 
-This project explores using reinforcement learning to train an agent to play Doom using VizDoom and Stable-Baselines3.
+This project explores using reinforcement learning to train an agent to play Doom
 
 ## Single-Threaded Version
 
