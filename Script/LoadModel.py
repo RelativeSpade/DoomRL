@@ -1,11 +1,12 @@
 import time
-
 from stable_baselines3 import PPO
-
+from Script.GetLatestModel import get_latest_model
 from Script.VizDoomGym import VizDoomGym
 
+
 # directory of model
-load = '../train/Doom100000'
+CHECKPOINT_DIR = '../train/'
+load = get_latest_model(CHECKPOINT_DIR)
 # load model from disk
 model = PPO.load(load)
 # create rendered game
