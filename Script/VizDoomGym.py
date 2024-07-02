@@ -30,7 +30,7 @@ class VizDoomGym(Env):
     # Function that is called on every Ai action (or step)
     def step(self, action):
         # Specify actions and take step
-        actions = np.identity(3, np.uint8)
+        actions = np.identity(3, int)
         reward = self.game.make_action(actions[action], 4)
 
         # Get necessary returns from client
@@ -41,7 +41,7 @@ class VizDoomGym(Env):
             info = {"ammo": ammo}
         else:
             image = np.zeros(self.observation_space.shape)
-            info = 0
+            info = {"ammo": 0}
 
         done = self.game.is_episode_finished()
         return image, reward, done, info
