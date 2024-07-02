@@ -10,6 +10,7 @@ def get_latest_model(checkpoint_dir):
         if pattern.search(file)
     ]
     if not checkpoint_files:
+        print('No checkpoint found')
         return None, 0
 
     latest_checkpoint = max(checkpoint_files, key=lambda x: x[1])
