@@ -8,5 +8,6 @@ import cv2
 import os
 from stable_baselines3.common.callbacks import BaseCallback
 
-
+CHECKPOINT_DIR = '../train/'
+LOG_DIR = '../logs/'
 
