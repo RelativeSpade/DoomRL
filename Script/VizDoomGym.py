@@ -24,20 +24,21 @@ class VizDoomGym(Env):
         # Start the game
         self.game.init()
 
-        self.observation_space = Box(low=0, high=255, shape=(100, 160, 1), dtype=int)
+        self.observation_space = Box(low=0, high=255, shape=(100, 160, 1), dtype=np.uint8)
         self.action_space = Discrete(3)
 
     # Function that is called on every Ai action (or step)
     def step(self, action):
         # Specify actions and take step
-        actions = np.identity(3, int)
+        actions = np.identity(3, np.uint8)
         reward = self.game.make_action(actions[action], 4)
 
         # Get necessary returns from client
         if self.game.get_state():
             image = self.game.get_state().screen_buffer
             image = self.grayscale(image)
-            info = self.game.get_state().game_variables
+            ammo = self.game.get_state().game_variables[0]
+            info = {"ammo": ammo}
         else:
             image = np.zeros(self.observation_space.shape)
             info = 0
