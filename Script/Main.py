@@ -12,7 +12,7 @@ env = VizDoomGym(False, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
 
 latest_model_path, latest_n_calls = get_latest_model(CHECKPOINT_DIR)
 if latest_model_path is None:
-    model = PPO('CnnPolicy', env, tensorboard_log=LOG_DIR, verbose=1, learning_rate=0.00001, n_steps=8192, clip_range=.1, gamma=.95, gae_lambda=.9)
+    model = PPO('CnnPolicy', env, tensorboard_log=LOG_DIR, verbose=1, learning_rate=0.000001, n_steps=8192, clip_range=.1, gamma=.95, gae_lambda=.9)
 else:
     model = PPO.load(latest_model_path, env, tensorboard_log=LOG_DIR)
     callback.n_calls = latest_n_calls

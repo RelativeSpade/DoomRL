@@ -55,7 +55,7 @@ class VizDoomGym(Env):
             ammo_delta = ammo - self.ammo
             self.ammo = ammo
 
-            reward = movement_reward + damage_taken_delta*10 + damage_count_delta*200 + ammo_delta*5
+            reward = movement_reward + damage_taken_delta*10 + damage_count_delta*250 + ammo_delta*5
 
             info = ammo
         else:
@@ -86,6 +86,6 @@ class VizDoomGym(Env):
         self.game.new_episode()
         state = self.game.get_state().screen_buffer
         self.damage_taken = 0
-        self.hit_count = 0
+        self.damage_count = 0
         self.ammo = 52
         return self.grayscale(state)
