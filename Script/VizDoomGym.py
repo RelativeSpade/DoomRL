@@ -27,9 +27,9 @@ class VizDoomGym(Env):
         self.observation_space = Box(low=0, high=255, shape=(100, 160, 1), dtype=np.uint8)
         self.action_space = Discrete(7)
 
-        # HEALTH DAMAGE_TAKEN HITCOUNT AMMO
+        # HEALTH DAMAGE_TAKEN DAMAGECOUNT AMMO
         self.damage_taken = 0
-        self.hit_count = 0
+        self.damage_count = 0
         self.ammo = 52
 
     # Function that is called on every Ai action (or step)
@@ -45,17 +45,17 @@ class VizDoomGym(Env):
 
             # Reward shaping
             game_variables = self.game.get_state().game_variables
-            health, damage_taken, hit_count, ammo = game_variables
+            health, damage_taken, damage_count, ammo = game_variables
 
             # Calculate reward deltas (delta means difference)
             damage_taken_delta = -damage_taken + self.damage_taken
             self.damage_taken = damage_taken
-            hit_count_delta = hit_count - self.hit_count
-            self.hit_count = hit_count
+            damage_count_delta = damage_count - self.damage_count
+            self.damage_count = damage_count
             ammo_delta = ammo - self.ammo
             self.ammo = ammo
 
-            reward = movement_reward + damage_taken_delta*10 + hit_count_delta*200 + ammo_delta*5
+            reward = movement_reward + damage_taken_delta*10 + damage_count_delta*200 + ammo_delta*5
 
             info = ammo
         else:
