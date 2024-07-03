@@ -8,7 +8,7 @@ LOG_DIR = '../logs/'
 
 callback = TrainAndLoggingCallback(check_freq=10000, save_path=CHECKPOINT_DIR)
 
-env = VizDoomGym(False, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
+env = VizDoomGym(False, '../Vizdoom/scenarios/deadly_corridor (2).cfg')
 
 latest_model_path, latest_n_calls = get_latest_model(CHECKPOINT_DIR)
 if latest_model_path is None:
@@ -17,4 +17,4 @@ else:
     model = PPO.load(latest_model_path, env, tensorboard_log=LOG_DIR)
     callback.n_calls = latest_n_calls
 
-model.learn(total_timesteps=300000, callback=callback)
+model.learn(total_timesteps=100000, callback=callback)

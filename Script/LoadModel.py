@@ -10,7 +10,7 @@ load, _ = get_latest_model(CHECKPOINT_DIR)
 # load model from disk
 model = PPO.load(load)
 # create rendered game
-env = VizDoomGym(True, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
+env = VizDoomGym(True, '../Vizdoom/scenarios/deadly_corridor (2).cfg')
 
 # evaluate mean score for 10 games
 total_reward = 0

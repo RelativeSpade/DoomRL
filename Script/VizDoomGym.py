@@ -61,7 +61,7 @@ class VizDoomGym(Env):
 
             reward = (movement_reward * 0.75 +
                       damage_taken_delta * 10 +
-                      damage_count_delta * 50 +
+                      damage_count_delta * 25 +
                       ammo_delta * 5)
 
             info = ammo
