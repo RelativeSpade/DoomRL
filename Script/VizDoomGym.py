@@ -60,7 +60,6 @@ class VizDoomGym(Env):
             info = ammo
         else:
             image = np.zeros(self.observation_space.shape)
-            reward = movement_reward
             info = 0
 
         info = {"info": info}
