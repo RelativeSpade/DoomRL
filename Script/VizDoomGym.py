@@ -30,7 +30,7 @@ class VizDoomGym(Env):
         # HEALTH DAMAGE_TAKEN HITCOUNT AMMO
         self.damage_taken = 0
         self.hit_count = 0
-        self.ammo = 60
+        self.ammo = 52
 
     # Function that is called on every Ai action (or step)
     def step(self, action):
@@ -86,4 +86,7 @@ class VizDoomGym(Env):
     def reset(self):
         self.game.new_episode()
         state = self.game.get_state().screen_buffer
+        self.damage_taken = 0
+        self.hit_count = 0
+        self.ammo = 52
         return self.grayscale(state)
