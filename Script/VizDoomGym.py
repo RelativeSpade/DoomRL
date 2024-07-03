@@ -25,22 +25,42 @@ class VizDoomGym(Env):
         self.game.init()
 
         self.observation_space = Box(low=0, high=255, shape=(100, 160, 1), dtype=np.uint8)
-        self.action_space = Discrete(3)
+        self.action_space = Discrete(7)
+
+        # HEALTH DAMAGE_TAKEN HITCOUNT AMMO
+        self.damage_taken = 0
+        self.hit_count = 0
+        self.ammo = 60
 
     # Function that is called on every Ai action (or step)
     def step(self, action):
         # Specify actions and take step
-        actions = np.identity(3, dtype=np.uint8)
-        reward = self.game.make_action(actions[action], 4)
+        actions = np.identity(7, dtype=np.uint8)
+        movement_reward = self.game.make_action(actions[action], 4)
 
         # Get necessary returns from client
         if self.game.get_state():
             image = self.game.get_state().screen_buffer
             image = self.grayscale(image)
-            ammo = self.game.get_state().game_variables[0]
+
+            # Reward shaping
+            game_variables = self.game.get_state().game_variables
+            health, damage_taken, hit_count, ammo = game_variables
+
+            # Calculate reward deltas (delta means difference)
+            damage_taken_delta = -damage_taken + self.damage_taken
+            self.damage_taken = damage_taken
+            hit_count_delta = hit_count - self.hit_count
+            self.hit_count = hit_count
+            ammo_delta = ammo - self.ammo
+            self.ammo = ammo
+
+            reward = movement_reward + damage_taken_delta*10 + hit_count_delta*200 + ammo_delta*5
+
             info = ammo
         else:
             image = np.zeros(self.observation_space.shape)
+            reward = movement_reward
             info = 0
 
         info = {"info": info}
