@@ -8,7 +8,7 @@ LOG_DIR = '../logs/'
 
 callback = TrainAndLoggingCallback(check_freq=10000, save_path=CHECKPOINT_DIR)
 
-env = VizDoomGym(False, '../Vizdoom/scenarios/deadly_corridor (2).cfg')
+env = VizDoomGym(False, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
 
 latest_model_path, latest_n_calls = get_latest_model(CHECKPOINT_DIR)
 if latest_model_path is None:
