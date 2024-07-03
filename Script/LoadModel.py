@@ -10,11 +10,11 @@ load, _ = get_latest_model(CHECKPOINT_DIR)
 # load model from disk
 model = PPO.load(load)
 # create rendered game
-env = VizDoomGym(True, '../Vizdoom/scenarios/defend_the_center.cfg')
+env = VizDoomGym(True, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
 
 # evaluate mean score for 10 games
 total_reward = 0
-for episode in range(10):
+for episode in range(1):
     obs = env.reset()
     done = False
     while not done:

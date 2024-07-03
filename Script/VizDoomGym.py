@@ -55,7 +55,10 @@ class VizDoomGym(Env):
             ammo_delta = ammo - self.ammo
             self.ammo = ammo
 
-            reward = movement_reward + damage_taken_delta*10 + damage_count_delta*250 + ammo_delta*5
+            reward = (movement_reward +
+                      damage_taken_delta * 10 +
+                      damage_count_delta * 200 +
+                      ammo_delta * 5)
 
             info = ammo
         else:
@@ -63,6 +66,7 @@ class VizDoomGym(Env):
             info = 0
 
         info = {"info": info}
+        print("Action: {} Reward: {}".format(actions[action], reward))
         done = self.game.is_episode_finished()
         return image, reward, done, info
 
