@@ -37,7 +37,7 @@ class VizDoomGym(Env):
         # Specify actions and take step
         actions = np.identity(7, dtype=np.uint8)
         movement_reward = self.game.make_action(actions[action], 4)
-
+        reward = 0
         # Get necessary returns from client
         if self.game.get_state():
             image = self.game.get_state().screen_buffer
