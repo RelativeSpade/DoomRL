@@ -14,7 +14,7 @@ env = VizDoomGym(True, '../Vizdoom/scenarios/deadly_corridor (1).cfg')
 
 # evaluate mean score for 10 games
 total_reward = 0
-for episode in range(1):
+for episode in range(5):
     obs = env.reset()
     done = False
     while not done:
